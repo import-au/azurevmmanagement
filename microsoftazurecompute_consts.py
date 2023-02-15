@@ -17,6 +17,7 @@
 # Define your constants here
 MS_BASE_URL = "https://management.azure.com/subscriptions/{subscriptionId}"
 
+GET_RESOURCE_ENDPOINT = "/resourceGroups/{resourceGroupName}/providers/{resourceProvider}/{resourceType}/{resourceName}"
 VM_GET_SYSTEM_INFO_ENDPOINT = "/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}?api-version=2018-06-01"
 VM_LIST_VMS_RESOURCE_GROUP_ENDPOINT = "/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines?api-version=2018-06-01"
 VM_LIST_VMS_ALL_ENDPOINT = "/providers/Microsoft.Compute/virtualMachines?api-version=2018-06-01"

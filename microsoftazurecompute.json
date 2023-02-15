@@ -552,6 +552,57 @@
             "versions": "EQ(*)"
         },
         {
+            "action": "get resource",
+            "identifier": "get_resource",
+            "description": "Get information about a resource",
+            "type": "investigate",
+            "read_only": true,
+            "parameters": {
+                "resource_group_name": {
+                    "description": "The name of the resource group",
+                    "data_type": "string",
+                    "required": true,
+                    "primary": true,
+                    "contains": [
+                        "vm management resource group"
+                    ],
+                    "order": 0
+                },
+                "resource_type": {
+                    "description": "The type of resource",
+                    "data_type": "string",
+                    "required": true,
+                    "primary": true,
+                    "contains": [],
+                    "order": 1
+                },
+                "resource_provider": {
+                    "description": "The resource provider",
+                    "data_type": "string",
+                    "required": true,
+                    "primary": true,
+                    "contains": [],
+                    "order": 2
+                },
+                "resource_name": {
+                    "description": "The name of the virtual machine",
+                    "data_type": "string",
+                    "required": true,
+                    "primary": true,
+                    "contains": [],
+                    "order": 3
+                },
+                "subscription_id": {
+                    "description": "Subscription ID to overwrite asset configuration value",
+                    "data_type": "string",
+                    "order": 4
+                }
+            },
+            "output": [],
+            "render": {},
+            "versions": "EQ(*)"
+        },
+        {
             "action": "list vms",
             "identifier": "list_vms",
             "description": "Get the list of registered VMs",

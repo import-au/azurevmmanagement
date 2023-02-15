@@ -996,6 +996,35 @@ class MicrosoftAzureComputeConnector(BaseConnector):
 
         return action_result.set_status(phantom.APP_SUCCESS, "The system info was successfully retrieved")
 
+    def _handle_get_resource(self, param):
+        """ This function is used to handle the get resource info action.
+
+        :param param: Dictionary of input parameters
+        :return: status(phantom.APP_SUCCESS/phantom.APP_ERROR)
+        """
+        # Implement the handler here
+        self.save_progress("In action handler for: {0}".format(self.get_action_identifier()))
+
+        action_result = self.add_action_result(ActionResult(dict(param)))
+
+        resource_group_name = param.get('resource_group_name')
+        resource_provider = param.get('resource_provider')
+        resource_type = param.get('resource_type')
+        resource_name = param.get('resource_name')
+
+        # make rest call
+        endpoint = GET_RESOURCE_ENDPOINT.format(resourceGroupName=resource_group_name, resourceProvider=resource_provider, resourceType=resource_type, resourceName=resource_name)
+        ret_val, response = self._make_rest_call_helper(endpoint, action_result, params=None, headers=None)
+
+        if phantom.is_fail(ret_val):
+            self.debug_print("Get system info failed.")
+            return action_result.get_status()
+
+        # Add the response into the data section
+        action_result.add_data(response)
+
+        return action_result.set_status(phantom.APP_SUCCESS, "The system info was successfully retrieved")
+
     def _handle_list_vms(self, param):
         """ This function is used to handle the list vms action.
 
